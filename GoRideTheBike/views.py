@@ -88,8 +88,5 @@ def tomorrow(request):
     return render(request, 'index.html',context)
 
 def work_instruction(request):
-    #unicode_text = 'Хуяк-хуяк и в продакшн'.decode('utf8')
-    #u = unicode(unicode_text)
-    #u = u"%s"%(unicode_text.decode('utf8'),)
     context = {"text_to_display" : "Хуяк-хуяк и в продакшн"}
     return render(request, 'text_to_display.html',context)

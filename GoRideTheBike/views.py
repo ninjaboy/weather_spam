@@ -1,5 +1,8 @@
+﻿# -*- coding: utf-8 -*-
+
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils.encoding import smart_unicode
 import smtplib, os
 import time
 import re
@@ -83,3 +86,10 @@ def tomorrow(request):
     good_to_ride = is_good_to_ride(forecast,day_hours,comfortable_temp,comfortable_rain)
     context = {"is_good_to_ride" : good_to_ride}
     return render(request, 'index.html',context)
+
+def work_instruction(request):
+    #unicode_text = 'Хуяк-хуяк и в продакшн'.decode('utf8')
+    #u = unicode(unicode_text)
+    #u = u"%s"%(unicode_text.decode('utf8'),)
+    context = {"text_to_display" : "Хуяк-хуяк и в продакшн"}
+    return render(request, 'text_to_display.html',context)

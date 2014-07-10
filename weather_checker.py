@@ -18,13 +18,14 @@ from email import Encoders
 def send_mail(send_from, send_to, subject, text, files=[], server="localhost"):
 	assert type(send_to)==list
 	assert type(files)==list
-	msg = MIMEMultipart()
+	msg = MIMEMultipart('alternative')
 	msg['From'] = send_from
 	msg['To'] = COMMASPACE.join(send_to)
 	msg['Date'] = formatdate(localtime=True)
 	msg['Subject'] = subject
+	msg['Content-Type'] = "text/html; charset=utf-8"
 	
-	msg.attach( MIMEText(text) )
+	msg.attach(MIMEText(text.encode('utf-8'),'plain','utf-8')
 	
 	for f in files:
 		part = MIMEBase('application', "octet-stream")

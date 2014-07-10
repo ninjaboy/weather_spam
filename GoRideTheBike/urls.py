@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^$',views.index, name = 'index'),
     url(r'^today/',views.today, name='today'),
     url(r'^tomorrow/',views.tomorrow, name = 'tomorrow'),
+    url(r'^work_instruction/',views.work_instruction, name = 'work_instruction'),
 
 )

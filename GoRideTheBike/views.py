@@ -66,6 +66,7 @@ def is_good_to_ride(weather_forecast,ride_hours,allowed_temp,allowed_rain):
 
 
 def index(request):
+    good_to_ride = 0
     url = "http://api.openweathermap.org/data/2.5/forecast?q=Minsk&units=metric"
     forecast = get_weather_forecast(get_json(url),date.today() + timedelta(days = 1))
     good_to_ride = is_good_to_ride(forecast,day_hours,comfortable_temp,comfortable_rain)
@@ -74,6 +75,7 @@ def index(request):
     #return HttpResponse(forecast)
 
 def today(request):
+    good_to_ride = 0
     url = "http://api.openweathermap.org/data/2.5/forecast?q=Minsk&units=metric"
     forecast = get_weather_forecast(get_json(url),date.today())
     good_to_ride = is_good_to_ride(forecast,evening_hours,comfortable_temp,comfortable_rain)
@@ -81,6 +83,7 @@ def today(request):
     return render(request, 'index.html',context)
 
 def tomorrow(request):
+    good_to_ride = 0
     url = "http://api.openweathermap.org/data/2.5/forecast?q=Minsk&units=metric"
     forecast = get_weather_forecast(get_json(url),date.today() + timedelta(days = 1))
     good_to_ride = is_good_to_ride(forecast,day_hours,comfortable_temp,comfortable_rain)
